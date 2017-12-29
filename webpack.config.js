@@ -15,6 +15,9 @@ module.exports = {
         library: 'library',
         libraryTarget: 'umd'
     },
+    resolveLoader: {
+        modules: ['node_modules'],
+    },
     module: {
         loaders: [
             {
