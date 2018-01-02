@@ -20,6 +20,10 @@ exports.invoke = function (deps, globals, actionName, data, authenticationType, 
     });
 }.bind(null, {});
 
+exports.invoke.description = `The replSetGetStatus command returns the status of the replica set from the point of view of ` + 
+                             `the server that processed the command. replSetGetStatus must be run against the admin database. ` +
+                             `The command has the following prototype form: { replSetGetStatus: 1 }`;
+
 exports.invoke.definition = [
     {
         "name": "database",

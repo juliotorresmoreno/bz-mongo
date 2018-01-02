@@ -19,6 +19,10 @@ exports.invoke = function (deps, globals, actionName, data, authenticationType, 
     });
 }.bind(null, {});
 
+exports.invoke.description = `All command documentation outlined below describes a command and its available parameters and provides a ` +
+                             `document template or prototype for each command. Some command documentation also includes the relevant ` +
+                             `mongo shell helpers.`;
+
 exports.invoke.definition = [
     {
         "name": "command",

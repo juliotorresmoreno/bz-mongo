@@ -16,6 +16,9 @@ exports.invoke = function (deps, globals, actionName, data, authenticationType, 
     });
 }.bind(null, {});
 
+exports.invoke.description = `Creates a new user for the database on which the method is run. ` +
+                             `db.createUser() returns a duplicate user error if the user already exists on the database.`;
+
 exports.invoke.definition = [
     {
         "name": "user",

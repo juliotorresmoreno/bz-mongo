@@ -19,6 +19,9 @@ exports.invoke = function (deps, globals, actionName, data, authenticationType, 
     });
 }.bind(null, {});
 
+exports.invoke.description = `The buildInfo command is an administrative command which returns a build summary for the current mongod. ` +
+                             `buildInfo has the following prototype form: { buildInfo: 1 }`;
+
 exports.invoke.definition = [
     {
         "name": "database",

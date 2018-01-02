@@ -1,8 +1,14 @@
 [
     {
-        "name": "command",
-        "description": "",
-        "inputs": [],
+        "name": "build-info",
+        "description": "The buildInfo command is an administrative command which returns a build summary for the current mongod. buildInfo has the following prototype form: { buildInfo: 1 }",
+        "inputs": [
+            {
+                "name": "database",
+                "type": "string",
+                "qty": "single"
+            }
+        ],
         "outputs": [
             {
                 "name": "version",
@@ -135,9 +141,287 @@
         ]
     },
     {
-        "name": "server-info",
-        "description": "",
+        "name": "command",
+        "description": "All command documentation outlined below describes a command and its available parameters and provides a document template or prototype for each command. Some command documentation also includes the relevant mongo shell helpers.",
+        "inputs": [
+            {
+                "name": "command",
+                "type": "string",
+                "qty": "single"
+            },
+            {
+                "name": "database",
+                "type": "string",
+                "qty": "single"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "version",
+                "type": "string",
+                "qty": "single"
+            },
+            {
+                "name": "gitVersion",
+                "type": "string",
+                "qty": "single"
+            },
+            {
+                "name": "modules",
+                "qty": "list"
+            },
+            {
+                "name": "allocator",
+                "type": "string",
+                "qty": "single"
+            },
+            {
+                "name": "javascriptEngine",
+                "type": "string",
+                "qty": "single"
+            },
+            {
+                "name": "sysInfo",
+                "type": "string",
+                "qty": "single"
+            },
+            {
+                "name": "versionArray",
+                "type": "integer",
+                "qty": "list"
+            },
+            {
+                "name": "openssl",
+                "type": "object",
+                "qty": "single",
+                "props": [
+                    {
+                        "name": "running",
+                        "type": "string",
+                        "qty": "single"
+                    },
+                    {
+                        "name": "compiled",
+                        "type": "string",
+                        "qty": "single"
+                    }
+                ]
+            },
+            {
+                "name": "buildEnvironment",
+                "type": "object",
+                "qty": "single",
+                "props": [
+                    {
+                        "name": "distmod",
+                        "type": "string",
+                        "qty": "single"
+                    },
+                    {
+                        "name": "distarch",
+                        "type": "string",
+                        "qty": "single"
+                    },
+                    {
+                        "name": "cc",
+                        "type": "string",
+                        "qty": "single"
+                    },
+                    {
+                        "name": "ccflags",
+                        "type": "string",
+                        "qty": "single"
+                    },
+                    {
+                        "name": "cxx",
+                        "type": "string",
+                        "qty": "single"
+                    },
+                    {
+                        "name": "cxxflags",
+                        "type": "string",
+                        "qty": "single"
+                    },
+                    {
+                        "name": "linkflags",
+                        "type": "string",
+                        "qty": "single"
+                    },
+                    {
+                        "name": "target_arch",
+                        "type": "string",
+                        "qty": "single"
+                    },
+                    {
+                        "name": "target_os",
+                        "type": "string",
+                        "qty": "single"
+                    }
+                ]
+            },
+            {
+                "name": "bits",
+                "type": "integer",
+                "qty": "single"
+            },
+            {
+                "name": "debug",
+                "type": "boolean",
+                "qty": "single"
+            },
+            {
+                "name": "maxBsonObjectSize",
+                "type": "integer",
+                "qty": "single"
+            },
+            {
+                "name": "storageEngines",
+                "type": "string",
+                "qty": "list"
+            },
+            {
+                "name": "ok",
+                "type": "integer",
+                "qty": "single"
+            }
+        ]
+    },
+    {
+        "name": "list-databases",
+        "description": "The listDatabases command provides a list of all existing databases along with basic statistics about them. The listDatabases must run against the admin database, as in the following example: db.adminCommand( { listDatabases: 1 } )",
         "inputs": [],
+        "outputs": [
+            [
+                {
+                    "name": "name",
+                    "type": "string",
+                    "qty": "single"
+                },
+                {
+                    "name": "sizeOnDisk",
+                    "type": "integer",
+                    "qty": "single"
+                },
+                {
+                    "name": "empty",
+                    "type": "boolean",
+                    "qty": "single"
+                }
+            ],
+            [
+                {
+                    "name": "name",
+                    "type": "string",
+                    "qty": "single"
+                },
+                {
+                    "name": "sizeOnDisk",
+                    "type": "integer",
+                    "qty": "single"
+                },
+                {
+                    "name": "empty",
+                    "type": "boolean",
+                    "qty": "single"
+                }
+            ],
+            [
+                {
+                    "name": "name",
+                    "type": "string",
+                    "qty": "single"
+                },
+                {
+                    "name": "sizeOnDisk",
+                    "type": "integer",
+                    "qty": "single"
+                },
+                {
+                    "name": "empty",
+                    "type": "boolean",
+                    "qty": "single"
+                }
+            ]
+        ]
+    },
+    {
+        "name": "ping",
+        "description": "The ping command is a no-op used to test whether a server is responding to commands. This command will return immediately even if the server is write-locked: { ping: 1 }",
+        "inputs": [
+            {
+                "name": "database",
+                "type": "string",
+                "qty": "single"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "name": "remove-user",
+        "description": "Removes the specified username from the database.",
+        "inputs": [
+            {
+                "name": "user",
+                "type": "string",
+                "qty": "single"
+            },
+            {
+                "name": "database",
+                "type": "string",
+                "qty": "single"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "response",
+                "type": "string",
+                "qty": "single"
+            }
+        ]
+    },
+    {
+        "name": "add-user",
+        "description": "Creates a new user for the database on which the method is run. db.createUser() returns a duplicate user error if the user already exists on the database.",
+        "inputs": [
+            {
+                "name": "user",
+                "type": "string",
+                "qty": "single"
+            },
+            {
+                "name": "pwd",
+                "type": "string",
+                "qty": "single"
+            },
+            {
+                "name": "role",
+                "type": "string",
+                "qty": "single"
+            },
+            {
+                "name": "database",
+                "type": "string",
+                "qty": "single"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "response",
+                "type": "string",
+                "qty": "single"
+            }
+        ]
+    },
+    {
+        "name": "server-info",
+        "description": "The serverInfo command is an administrative command which returns a build summary for the current mongod.",
+        "inputs": [
+            {
+                "name": "database",
+                "type": "string",
+                "qty": "single"
+            }
+        ],
         "outputs": [
             {
                 "name": "version",
@@ -271,8 +555,14 @@
     },
     {
         "name": "server-status",
-        "description": "",
-        "inputs": [],
+        "description": "The serverStatus command returns a document that provides an overview of the database’s state. Monitoring applications can run this command at a regular interval to collect statistics about the instance.",
+        "inputs": [
+            {
+                "name": "database",
+                "type": "string",
+                "qty": "single"
+            }
+        ],
         "outputs": [
             {
                 "name": "host",
@@ -491,6 +781,11 @@
                                         "qty": "single"
                                     },
                                     {
+                                        "name": "w",
+                                        "type": "integer",
+                                        "qty": "single"
+                                    },
+                                    {
                                         "name": "R",
                                         "type": "integer",
                                         "qty": "single"
@@ -521,6 +816,11 @@
                                     },
                                     {
                                         "name": "w",
+                                        "type": "integer",
+                                        "qty": "single"
+                                    },
+                                    {
+                                        "name": "W",
                                         "type": "integer",
                                         "qty": "single"
                                     }
@@ -5507,67 +5807,20 @@
         ]
     },
     {
-        "name": "list-databases",
-        "description": "",
-        "inputs": [],
-        "outputs": [
-            [
-                {
-                    "name": "name",
-                    "type": "string",
-                    "qty": "single"
-                },
-                {
-                    "name": "sizeOnDisk",
-                    "type": "integer",
-                    "qty": "single"
-                },
-                {
-                    "name": "empty",
-                    "type": "boolean",
-                    "qty": "single"
-                }
-            ],
-            [
-                {
-                    "name": "name",
-                    "type": "string",
-                    "qty": "single"
-                },
-                {
-                    "name": "sizeOnDisk",
-                    "type": "integer",
-                    "qty": "single"
-                },
-                {
-                    "name": "empty",
-                    "type": "boolean",
-                    "qty": "single"
-                }
-            ],
-            [
-                {
-                    "name": "name",
-                    "type": "string",
-                    "qty": "single"
-                },
-                {
-                    "name": "sizeOnDisk",
-                    "type": "integer",
-                    "qty": "single"
-                },
-                {
-                    "name": "empty",
-                    "type": "boolean",
-                    "qty": "single"
-                }
-            ]
-        ]
-    },
-    {
-        "name": "add-user",
-        "description": "",
-        "inputs": [],
+        "name": "set-profiling-level",
+        "description": "Modifies the current database profiler level used by the database profiling system to capture data about performance. The method provides a wrapper around the database command profile.",
+        "inputs": [
+            {
+                "name": "level",
+                "type": "string",
+                "qty": "single"
+            },
+            {
+                "name": "database",
+                "type": "string",
+                "qty": "single"
+            }
+        ],
         "outputs": [
             {
                 "name": "response",
@@ -5577,13 +5830,65 @@
         ]
     },
     {
-        "name": "remove-user",
-        "description": "",
-        "inputs": [],
+        "name": "validate-collection",
+        "description": "Validates a collection. The method scans a collection’s data structures for correctness and returns a single document that describes the relationship between the logical collection and the physical representation of the data.",
+        "inputs": [
+            {
+                "name": "collection",
+                "type": "string",
+                "qty": "single"
+            },
+            {
+                "name": "database",
+                "type": "string",
+                "qty": "single"
+            }
+        ],
         "outputs": [
             {
-                "name": "response",
+                "name": "ns",
                 "type": "string",
+                "qty": "single"
+            },
+            {
+                "name": "nrecords",
+                "type": "integer",
+                "qty": "single"
+            },
+            {
+                "name": "nIndexes",
+                "type": "integer",
+                "qty": "single"
+            },
+            {
+                "name": "keysPerIndex",
+                "type": "object",
+                "qty": "single",
+                "props": [
+                    {
+                        "name": "test.users.$_id_",
+                        "type": "integer",
+                        "qty": "single"
+                    }
+                ]
+            },
+            {
+                "name": "valid",
+                "type": "boolean",
+                "qty": "single"
+            },
+            {
+                "name": "warnings",
+                "type": "string",
+                "qty": "list"
+            },
+            {
+                "name": "errors",
+                "qty": "list"
+            },
+            {
+                "name": "ok",
+                "type": "integer",
                 "qty": "single"
             }
         ]

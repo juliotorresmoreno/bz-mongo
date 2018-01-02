@@ -20,6 +20,8 @@ exports.invoke = function (deps, globals, actionName, data, authenticationType, 
     });
 }.bind(null, {});
 
+exports.invoke.description = `Removes the specified username from the database.`;
+
 exports.invoke.definition = [
     {
         "name": "user",

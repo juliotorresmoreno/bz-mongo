@@ -20,6 +20,10 @@ exports.invoke = function (deps, globals, actionName, data, authenticationType, 
     });
 }.bind(null, {});
 
+exports.invoke.description = `Validates a collection. The method scans a collection’s data structures for correctness `+
+                             `and returns a single document that describes the relationship between the logical collection ` +
+                             `and the physical representation of the data.`;
+
 exports.invoke.definition = [
     {
         "name": "collection",

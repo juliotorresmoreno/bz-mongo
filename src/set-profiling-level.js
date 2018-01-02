@@ -19,6 +19,9 @@ exports.invoke = function (deps, globals, actionName, data, authenticationType, 
     });
 }.bind(null, {});
 
+exports.invoke.description = `Modifies the current database profiler level used by the database profiling system to capture ` +
+                             `data about performance. The method provides a wrapper around the database command profile.`;
+
 exports.invoke.definition = [
     {
         "name": "level",

@@ -19,6 +19,9 @@ exports.invoke = function (deps, globals, actionName, data, authenticationType, 
     });
 }.bind(null, {});
 
+exports.invoke.description = `The serverStatus command returns a document that provides an overview of the database’s state. ` +
+                             `Monitoring applications can run this command at a regular interval to collect statistics about the instance.`;
+
 exports.invoke.definition = [
     {
         "name": "database",

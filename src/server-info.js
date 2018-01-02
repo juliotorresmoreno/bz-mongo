@@ -20,6 +20,8 @@ exports.invoke = function (deps, globals, actionName, data, authenticationType, 
     });
 }.bind(null, {});
 
+exports.invoke.description = `The serverInfo command is an administrative command which returns a build summary for the current mongod.`;
+
 exports.invoke.definition = [
     {
         "name": "database",

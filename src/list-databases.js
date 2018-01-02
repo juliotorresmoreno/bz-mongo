@@ -20,6 +20,10 @@ exports.invoke = function (deps, globals, actionName, data, authenticationType, 
     });
 }.bind(null, {});
 
+exports.invoke.description = `The listDatabases command provides a list of all existing databases along with basic statistics about them. ` +
+                             `The listDatabases must run against the admin database, as in the following example: ` + 
+                             `db.adminCommand( { listDatabases: 1 } )`;
+
 exports.invoke.definition = [
 
 ];
