@@ -2,7 +2,7 @@
 
 const { spawn } = require('child_process');
 
-export const invoke = function (deps, globals, actionName, data, authenticationType, logger, done) {
+exports.invoke = function (deps, globals, actionName, data, authenticationType, logger, done) {
     const ls = spawn('mongocli.exe', [
         '--command=validateCollection',
         '--globals=' + JSON.stringify(globals),
@@ -19,3 +19,16 @@ export const invoke = function (deps, globals, actionName, data, authenticationT
         done(data.toString("utf-8"));
     });
 }.bind(null, {});
+
+exports.invoke.definition = [
+    {
+        "name": "collection",
+        "type": "string",
+        "qty": "single"
+    },
+    {
+        "name": "database",
+        "type": "string",
+        "qty": "single"
+    }
+];

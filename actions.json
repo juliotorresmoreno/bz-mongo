@@ -1,29 +1,5 @@
 [
     {
-        "name": "remove-user",
-        "description": "",
-        "inputs": [],
-        "outputs": [
-            {
-                "name": "response",
-                "type": "string",
-                "qty": "single"
-            }
-        ]
-    },
-    {
-        "name": "add-user",
-        "description": "",
-        "inputs": [],
-        "outputs": [
-            {
-                "name": "response",
-                "type": "string",
-                "qty": "single"
-            }
-        ]
-    },
-    {
         "name": "command",
         "description": "",
         "inputs": [],
@@ -5586,6 +5562,30 @@
                     "qty": "single"
                 }
             ]
+        ]
+    },
+    {
+        "name": "add-user",
+        "description": "",
+        "inputs": [],
+        "outputs": [
+            {
+                "name": "response",
+                "type": "string",
+                "qty": "single"
+            }
+        ]
+    },
+    {
+        "name": "remove-user",
+        "description": "",
+        "inputs": [],
+        "outputs": [
+            {
+                "name": "response",
+                "type": "string",
+                "qty": "single"
+            }
         ]
     }
 ]

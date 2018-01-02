@@ -1559,7 +1559,7 @@ var _util = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (MongoClient) {
+function addUser(MongoClient) {
     return function (deps) {
         var globals = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : { authdata: {} };
         var actionName = arguments[2];
@@ -1583,7 +1583,27 @@ exports.default = function (MongoClient) {
             }).catch((0, _util.error)(done));
         }).catch((0, _util.error)(done));
     };
-};
+}
+
+addUser.definition = [{
+    "name": "user",
+    "type": "string",
+    "qty": "single"
+}, {
+    "name": "pwd",
+    "type": "string",
+    "qty": "single"
+}, {
+    "name": "role",
+    "type": "string",
+    "qty": "single"
+}, {
+    "name": "database",
+    "type": "string",
+    "qty": "single"
+}];
+
+exports.default = addUser;
 
 /***/ }),
 /* 13 */

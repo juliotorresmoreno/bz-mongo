@@ -1,7 +1,6 @@
 
 *.bizc
 node_modules
-build/actions
 test
 
 yarn-error.log
