@@ -11,7 +11,7 @@ module.exports = {
     },
     output: {
         path: __dirname,
-        filename: 'build/actions/bundle.js',
+        filename: 'cli/bundle.js',
         library: 'library',
         libraryTarget: 'umd'
     },

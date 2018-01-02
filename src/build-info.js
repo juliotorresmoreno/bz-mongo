@@ -1,6 +1,21 @@
 
+const { spawn } = require('child_process');
 
-import { buildInfo } from './bundle';
+export const invoke = function (deps, globals, actionName, data, authenticationType, logger, done) {
+    const ls = spawn('mongocli.exe', [
+        '--command=buildInfo',
+        '--globals=' + JSON.stringify(globals),
+        '--actionName=' + actionName,
+        '--data=' + JSON.stringify(data),
+        '--authenticationType=' + authenticationType
+    ]);
 
+    ls.stdout.on('data', (data) => {
+        done(data.toString("utf-8"));
+    });
 
-export const invoke = buildInfo.bind(null, {});
+    ls.stderr.on('data', (data) => {
+        done(data.toString("utf-8"));
+    });
+}.bind(null, {});
+
