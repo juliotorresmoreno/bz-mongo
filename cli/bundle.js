@@ -2178,7 +2178,7 @@ exports.default = function (MongoClient) {
             command = _data$inputs$input.command;
 
         (0, _util.connect)(MongoClient, globals.authdata).then(function (client) {
-            client.db(database).command(command).then(function (res) {
+            client.db(database).command(JSON.parse(command)).then(function (res) {
                 done(_bzUtil2.default.getResponse(res, null, 200, null));
                 client.close();
             }).catch((0, _util.error)(done));
@@ -2213,11 +2213,8 @@ exports.default = function (MongoClient) {
         var authenticationType = arguments[4];
         var logger = arguments[5];
         var done = arguments[6];
-        var _data$inputs$input = data.inputs.input,
-            _data$inputs$input$da = _data$inputs$input.database,
-            database = _data$inputs$input$da === undefined ? 'test' : _data$inputs$input$da,
-            command = _data$inputs$input.command;
 
+        var database = 'test';
         (0, _util.connect)(MongoClient, globals.authdata).then(function (client) {
             client.db(database).admin().listDatabases(function (err, _ref) {
                 var databases = _ref.databases;
@@ -2260,21 +2257,17 @@ exports.default = function (MongoClient) {
         var authenticationType = arguments[4];
         var logger = arguments[5];
         var done = arguments[6];
-        var _data$inputs$input = data.inputs.input,
-            _data$inputs$input$da = _data$inputs$input.database,
-            database = _data$inputs$input$da === undefined ? 'test' : _data$inputs$input$da,
-            command = _data$inputs$input.command;
+        var _data$inputs$input$da = data.inputs.input.database,
+            database = _data$inputs$input$da === undefined ? 'test' : _data$inputs$input$da;
 
         (0, _util.connect)(MongoClient, globals.authdata).then(function (client) {
-            client.db(database).admin().ping(function (err, _ref) {
-                var databases = _ref.databases;
-
+            client.db(database).admin().ping(function (err, response) {
                 if (err) {
                     (0, _util.error)(done)(err);
                     return;
                 }
                 client.close();
-                done(_bzUtil2.default.getResponse(databases, null, 200, null));
+                done(_bzUtil2.default.getResponse(response, null, 200, null));
             });
         }).catch((0, _util.error)(done));
     };
@@ -2309,8 +2302,6 @@ exports.default = function (MongoClient) {
         var done = arguments[6];
         var _data$inputs$input = data.inputs.input,
             user = _data$inputs$input.user,
-            pwd = _data$inputs$input.pwd,
-            role = _data$inputs$input.role,
             _data$inputs$input$da = _data$inputs$input.database,
             database = _data$inputs$input$da === undefined ? 'test' : _data$inputs$input$da;
 
@@ -2351,10 +2342,8 @@ exports.default = function (MongoClient) {
         var authenticationType = arguments[4];
         var logger = arguments[5];
         var done = arguments[6];
-        var _data$inputs$input = data.inputs.input,
-            _data$inputs$input$da = _data$inputs$input.database,
-            database = _data$inputs$input$da === undefined ? 'test' : _data$inputs$input$da,
-            command = _data$inputs$input.command;
+        var _data$inputs$input$da = data.inputs.input.database,
+            database = _data$inputs$input$da === undefined ? 'test' : _data$inputs$input$da;
 
         (0, _util.connect)(MongoClient, globals.authdata).then(function (client) {
             client.db(database).admin().replSetGetStatus(function (err, response) {
@@ -2396,10 +2385,8 @@ exports.default = function (MongoClient) {
         var authenticationType = arguments[4];
         var logger = arguments[5];
         var done = arguments[6];
-        var _data$inputs$input = data.inputs.input,
-            _data$inputs$input$da = _data$inputs$input.database,
-            database = _data$inputs$input$da === undefined ? 'test' : _data$inputs$input$da,
-            command = _data$inputs$input.command;
+        var _data$inputs$input$da = data.inputs.input.database,
+            database = _data$inputs$input$da === undefined ? 'test' : _data$inputs$input$da;
 
         (0, _util.connect)(MongoClient, globals.authdata).then(function (client) {
             client.db(database).admin().serverInfo(function (err, response) {
@@ -2441,10 +2428,8 @@ exports.default = function (MongoClient) {
         var authenticationType = arguments[4];
         var logger = arguments[5];
         var done = arguments[6];
-        var _data$inputs$input = data.inputs.input,
-            _data$inputs$input$da = _data$inputs$input.database,
-            database = _data$inputs$input$da === undefined ? 'test' : _data$inputs$input$da,
-            command = _data$inputs$input.command;
+        var _data$inputs$input$da = data.inputs.input.database,
+            database = _data$inputs$input$da === undefined ? 'test' : _data$inputs$input$da;
 
         (0, _util.connect)(MongoClient, globals.authdata).then(function (client) {
             client.db(database).admin().serverStatus(function (err, response) {
