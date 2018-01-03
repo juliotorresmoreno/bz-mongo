@@ -2137,8 +2137,8 @@ exports.default = function (MongoClient) {
             database = _data$inputs$input$da === undefined ? 'test' : _data$inputs$input$da;
 
         (0, _util.connect)(MongoClient, globals.authdata).then(function (client) {
-            client.db(database).command({ buildInfo: 1 }).then(function (res) {
-                done(_bzUtil2.default.getResponse(res, null, 200, null));
+            client.db(database).command({ buildInfo: 1 }).then(function (response) {
+                done(_bzUtil2.default.getResponse(response, null, 200, null));
                 client.close();
             }).catch((0, _util.error)(done));
         }).catch((0, _util.error)(done));
@@ -2178,8 +2178,8 @@ exports.default = function (MongoClient) {
             command = _data$inputs$input.command;
 
         (0, _util.connect)(MongoClient, globals.authdata).then(function (client) {
-            client.db(database).command(JSON.parse(command)).then(function (res) {
-                done(_bzUtil2.default.getResponse(res, null, 200, null));
+            client.db(database).command(JSON.parse(command)).then(function (response) {
+                done(_bzUtil2.default.getResponse(response, null, 200, null));
                 client.close();
             }).catch((0, _util.error)(done));
         }).catch((0, _util.error)(done));
@@ -2216,15 +2216,13 @@ exports.default = function (MongoClient) {
 
         var database = 'test';
         (0, _util.connect)(MongoClient, globals.authdata).then(function (client) {
-            client.db(database).admin().listDatabases(function (err, _ref) {
-                var databases = _ref.databases;
-
+            client.db(database).admin().listDatabases(function (err, response) {
                 if (err) {
                     (0, _util.error)(done)(err);
                     return;
                 }
                 client.close();
-                done(_bzUtil2.default.getResponse(databases, null, 200, null));
+                done(_bzUtil2.default.getResponse(response, null, 200, null));
             });
         }).catch((0, _util.error)(done));
     };
@@ -2260,6 +2258,7 @@ exports.default = function (MongoClient) {
         var _data$inputs$input$da = data.inputs.input.database,
             database = _data$inputs$input$da === undefined ? 'test' : _data$inputs$input$da;
 
+        console.log("sdfs");
         (0, _util.connect)(MongoClient, globals.authdata).then(function (client) {
             client.db(database).admin().ping(function (err, response) {
                 if (err) {
@@ -2307,7 +2306,7 @@ exports.default = function (MongoClient) {
 
         (0, _util.connect)(MongoClient, globals.authdata).then(function (client) {
             var db = client.db(database);
-            db.removeUser(user).then(function (res) {
+            db.removeUser(user).then(function (response) {
                 done(_bzUtil2.default.getResponse({ response: "User has ben deleted." }, null, 200, null));
                 client.close();
             }).catch((0, _util.error)(done));
@@ -2483,7 +2482,7 @@ exports.default = function (MongoClient) {
                     return;
                 }
                 client.close();
-                done(_bzUtil2.default.getResponse({ response: response }, null, 200, null));
+                done(_bzUtil2.default.getResponse({ level: response }, null, 200, null));
             });
         }).catch((0, _util.error)(done));
     };

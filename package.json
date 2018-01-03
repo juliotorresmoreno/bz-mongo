@@ -6,6 +6,7 @@
     "test": "cross-env NODE_ENV=test node_modules/.bin/jest",
     "dev": "npm run babel-node",
     "babel-node": "cross-env node_modules/.bin/babel src --out-dir ./build/actions --watch",
+    "prepare": "webpack && cross-env node_modules/.bin/babel src --out-dir ./build/actions && nexe cli/index.js -o build/actions/mongocli.exe",
     "build": "cross-env node_modules/.bin/bz-def && npm run setup && npm run define && npm run production && npm run bundle && npm run clear",
     "setup": "cross-env node_modules/.bin/cpr package.json ./build/package.json && cross-env node_modules/.bin/cpr README.md ./build/README.md",
     "define": "npm run define:clear && npm run define:copy && cross-env node_modules/.bin/rimraf def",
@@ -17,8 +18,8 @@
   },
   "description": "Information about this connector",
   "author": {
-    "name": "Your name of course",
-    "email": "iamawesome@gmail.com"
+    "name": "Julio Torres",
+    "email": "jtorres990@gmail.com"
   },
   "dependencies": {
     "axios": "^0.17.1",
